@@ -3,7 +3,6 @@ import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Profile = () => {
-  const [user, setUser] = useState({})
   const [name, setName] = useState({})
   const [location, setLocation] = useState({})
   const [email,setEmail] = useState('')
@@ -16,7 +15,6 @@ const Profile = () => {
   const makeAPICall = async () => {
     try {
       const response = await axios('https://www.randomuser.me/api')
-      setUser(response.data.results[0])
       setName(response.data.results[0].name)
       setLocation(response.data.results[0].location)
       setEmail(response.data.results[0].email)
@@ -50,9 +48,9 @@ const Profile = () => {
     return(
         <div className="profile">
             <div className="top-container">
-                <img className="profile-pic" src={picture} onClick={()=>setDisplayData(`${name.first} ${name.last}`)}/>
+    <img className="profile-pic" src={picture} onClick={()=>setDisplayData(`Hi, I'm ${name.first} ${name.last} and I live in ${location.city}, ${location.state}. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptas sed sit, aliquam, quam magni cumque consequuntur vel debitis consequatur quod officia exercitationem assumenda eius eum soluta sunt! At, omnis numquam?}`)}/>
                 <div id="icons">
-                <FontAwesomeIcon className="icon" id="address" icon={["fas", "address-book"]} onClick={()=>setDisplayData(`${location.street.number.toString()} ${location.street.name} ${location.city},${location.state} ${location.country} ${location.postcode}`)}/>
+    <FontAwesomeIcon className="icon" id="address" icon={["fas", "address-book"]} onClick={()=>setDisplayData(`${location.street.number.toString()} ${location.street.name} ${location.city}, ${location.state} ${location.country} ${location.postcode}`)}/>
                 <FontAwesomeIcon className="icon" id="envelope" icon={["fas", "envelope"]} onClick={()=>setDisplayData(email)}/>
                 <FontAwesomeIcon className="icon" id="cake"icon={["fas", "birthday-cake"]} onClick={()=>setDisplayData(convertDate(birthday.date))}/>
                 <FontAwesomeIcon className="icon" id="map" icon={["fas", "map"]} onClick={()=>setDisplayData(`${location.coordinates.latitude},${location.coordinates.longitude}`)}/>
@@ -62,9 +60,10 @@ const Profile = () => {
             </div>
             <div className="bottom-container">
                 <div className="data">
-                    {displayData === null ? <h3>{name.first} {name.last}</h3>:<h3>{displayData}</h3>}
+                    <h3>{name.first} {name.last}</h3>
                 </div>
-                <p className="bio">Hi, I'm {name.first} {name.last} and I live in {location.city}, {location.state}. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptas sed sit, aliquam, quam magni cumque consequuntur vel debitis consequatur quod officia exercitationem assumenda eius eum soluta sunt! At, omnis numquam?</p>
+                {displayData === null ?<p className="bio">Hi, I'm {name.first} {name.last} and I live in {location.city}, {location.state}. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptas sed sit, aliquam, quam magni cumque consequuntur vel debitis consequatur quod officia exercitationem assumenda eius eum soluta sunt! At, omnis numquam?</p>
+                :<p className="bio">{displayData}</p>}
             </div>
         </div>
     )
