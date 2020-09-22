@@ -48,7 +48,7 @@ const Profile = () => {
     return(
         <div className="profile">
             <div className="top-container">
-    <img className="profile-pic" src={picture} onClick={()=>setDisplayData(`Hi, I'm ${name.first} ${name.last} and I live in ${location.city}, ${location.state}. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptas sed sit, aliquam, quam magni cumque consequuntur vel debitis consequatur quod officia exercitationem assumenda eius eum soluta sunt! At, omnis numquam?}`)}/>
+                <img className="profile-pic" src={picture} onClick={()=>setDisplayData(`${name.first} ${name.last}`)}/>
                 <div id="icons">
     <FontAwesomeIcon className="icon" id="address" icon={["fas", "address-book"]} onClick={()=>setDisplayData(`${location.street.number.toString()} ${location.street.name} ${location.city}, ${location.state} ${location.country} ${location.postcode}`)}/>
                 <FontAwesomeIcon className="icon" id="envelope" icon={["fas", "envelope"]} onClick={()=>setDisplayData(email)}/>
@@ -60,10 +60,9 @@ const Profile = () => {
             </div>
             <div className="bottom-container">
                 <div className="data">
-                    <h3>{name.first} {name.last}</h3>
+                    {displayData === null ? <h3>{name.first} {name.last}</h3>:<h3>{displayData}</h3>}
                 </div>
-                {displayData === null ?<p className="bio">Hi, I'm {name.first} {name.last} and I live in {location.city}, {location.state}. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptas sed sit, aliquam, quam magni cumque consequuntur vel debitis consequatur quod officia exercitationem assumenda eius eum soluta sunt! At, omnis numquam?</p>
-                :<p className="bio">{displayData}</p>}
+                <p className="bio">Hi, I'm {name.first} {name.last} and I live in {location.city}, {location.state}. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptas sed sit, aliquam, quam magni cumque consequuntur vel debitis consequatur quod officia exercitationem assumenda eius eum soluta sunt! At, omnis numquam?</p>
             </div>
         </div>
     )
