@@ -50,14 +50,14 @@ const Profile = () => {
     return(
         <div className="profile">
             <div className="top-container">
-                <img src={picture}/>
+                <img className="profile-pic" src={picture} onClick={()=>setDisplayData(`${name.first} ${name.last}`)}/>
                 <div id="icons">
-                <FontAwesomeIcon icon={["fas", "address-book"]} onClick={()=>setDisplayData(`${location.street.number.toString()} ${location.street.name} ${location.city},${location.state} ${location.country} ${location.postcode}`)}/>
-                <FontAwesomeIcon icon={["fas", "envelope"]} onClick={()=>setDisplayData(email)}/>
-                <FontAwesomeIcon icon={["fas", "birthday-cake"]} onClick={()=>setDisplayData(convertDate(birthday.date))}/>
-                <FontAwesomeIcon icon={["fas", "map"]} onClick={()=>setDisplayData(`${location.coordinates.latitude},${location.coordinates.longitude}`)}/>
-                <FontAwesomeIcon icon={["fas", "phone-alt"]} onClick={()=>setDisplayData(phone)}/>
-                <FontAwesomeIcon icon={["fas", "key"]} onClick={()=>setDisplayData(`Username:${login.username} Password:${login.password}`)}/>
+                <FontAwesomeIcon id="address" icon={["fas", "address-book"]} onClick={()=>setDisplayData(`${location.street.number.toString()} ${location.street.name} ${location.city},${location.state} ${location.country} ${location.postcode}`)}/>
+                <FontAwesomeIcon id="envelope" icon={["fas", "envelope"]} onClick={()=>setDisplayData(email)}/>
+                <FontAwesomeIcon id="cake"icon={["fas", "birthday-cake"]} onClick={()=>setDisplayData(convertDate(birthday.date))}/>
+                <FontAwesomeIcon id="map" icon={["fas", "map"]} onClick={()=>setDisplayData(`${location.coordinates.latitude},${location.coordinates.longitude}`)}/>
+                <FontAwesomeIcon id="phone" icon={["fas", "phone-alt"]} onClick={()=>setDisplayData(phone)}/>
+                <FontAwesomeIcon id="key" icon={["fas", "key"]} onClick={()=>setDisplayData(`Username:${login.username} Password:${login.password}`)}/>
                 </div>
             </div>
             <div className="bottom-container">
